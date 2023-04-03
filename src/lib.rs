@@ -1,3 +1,23 @@
+use core::ops::Add;
+use std::fmt::{Display, Error, Formatter};
+
+#[derive(Clone, Copy)]
+pub struct Thing(pub u128);
+
+impl Add for Thing {
+    type Output = Self;
+
+    fn add(self, other: Self) -> Self::Output {
+        Thing(self.0 + other.0)
+    }
+}
+
+impl Display for Thing {
+    fn fmt(&self, f: &mut Formatter) -> Result<(), Error> {
+        write!(f, "{}", self.0)
+    }
+}
+
 pub struct Fib<T> {
     minus_two: T,
     minus_one: T,

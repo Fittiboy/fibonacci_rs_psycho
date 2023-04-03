@@ -1,5 +1,7 @@
-use fib::Fib;
+use fib::{Fib, Thing};
 
 fn main() {
-    Fib::new().take(20).for_each(|num| println!("{}", num));
+    Fib::from(Thing(1), Thing(0))
+        .take(20)
+        .for_each(|num| println!("{}", num));
 }
