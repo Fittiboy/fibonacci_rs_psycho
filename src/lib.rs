@@ -40,10 +40,10 @@ impl<T> Fib<T>
 where
     T: std::ops::Add<Output = T> + Copy,
 {
-    pub fn from(first: T, second: T) -> Self {
+    pub fn from(zeroth: T, first: T) -> Self {
         Fib {
             minus_two: first,
-            minus_one: second,
+            minus_one: zeroth,
         }
     }
 }
