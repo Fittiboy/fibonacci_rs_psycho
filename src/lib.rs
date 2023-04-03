@@ -1,10 +1,13 @@
-pub struct Fib {
-    minus_two: u128,
-    minus_one: u128,
+pub struct Fib<T> {
+    minus_two: T,
+    minus_one: T,
 }
 
-impl Iterator for Fib {
-    type Item = u128;
+impl<T> Iterator for Fib<T>
+where
+    T: std::ops::Add<Output = T> + Copy,
+{
+    type Item = T;
 
     fn next(&mut self) -> Option<Self::Item> {
         std::mem::swap(&mut self.minus_two, &mut self.minus_one);
@@ -13,7 +16,19 @@ impl Iterator for Fib {
     }
 }
 
-impl Fib {
+impl<T> Fib<T>
+where
+    T: std::ops::Add<Output = T> + Copy,
+{
+    pub fn from(first: T, second: T) -> Self {
+        Fib {
+            minus_two: first,
+            minus_one: second,
+        }
+    }
+}
+
+impl Fib<u128> {
     pub fn new() -> Self {
         Fib {
             minus_two: 1,
