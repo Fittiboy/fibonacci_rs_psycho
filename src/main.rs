@@ -5,7 +5,5 @@ fn main() {
         .take(20)
         .for_each(|num| println!("{}", num));
 
-    Fib::new()
-        .take(10)
-        .for_each(|num: u128| println!("{}", num));
+    Fib::new().take(10).for_each(|num: f64| println!("{}", num));
 }
