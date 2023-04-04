@@ -18,6 +18,12 @@ impl Display for Thing {
     }
 }
 
+impl Into<Thing> for u8 {
+    fn into(self) -> Thing {
+        Thing(self.into())
+    }
+}
+
 pub struct Fib<T> {
     minus_two: T,
     minus_one: T,
@@ -50,12 +56,12 @@ where
 
 impl<T> Fib<T>
 where
-    T: From<u8>,
+    u8: Into<T>,
 {
     pub fn new() -> Self {
         Fib {
-            minus_two: T::from(1),
-            minus_one: T::from(0),
+            minus_two: 1.into(),
+            minus_one: 0.into(),
         }
     }
 }
