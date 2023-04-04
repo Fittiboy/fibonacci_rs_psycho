@@ -48,11 +48,14 @@ where
     }
 }
 
-impl Fib<u128> {
+impl<T> Fib<T>
+where
+    T: From<u8>,
+{
     pub fn new() -> Self {
         Fib {
-            minus_two: 1,
-            minus_one: 0,
+            minus_two: T::from(1),
+            minus_one: T::from(0),
         }
     }
 }
